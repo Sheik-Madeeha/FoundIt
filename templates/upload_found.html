@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Found Item</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+    form { max-width: 400px; margin: auto; background: #f4f4f4; padding: 20px; border-radius: 10px; }
+    input, textarea, button { width: 100%; margin: 10px 0; padding: 10px; }
+    button { background: #28a745; color: white; border: none; cursor: pointer; }
+    button:hover { background: #218838; }
+  </style>
+</head>
+<body>
+  <h1>Report a Found Item</h1>
+  <form action="{{ url_for('submit_found') }}" method="POST" enctype="multipart/form-data">
+    <input type="email" name="email" placeholder="Your College Email" required>
+    <input type="text" name="item_name" placeholder="Item Name" required>
+    <textarea name="description" placeholder="Describe the item" required></textarea>
+    <input type="text" name="location" placeholder="Found Location" required>
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit">Submit</button>
+  </form>
+  <br>
+  <a href="/">⬅ Back to Home</a>
+</body>
+</html>

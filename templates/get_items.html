@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost & Found Items</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    .container { display: flex; justify-content: space-around; gap: 40px; }
+    .column { width: 45%; }
+    .item { border: 1px solid #ccc; padding: 10px; margin: 10px 0; background: #f9f9f9; }
+    img { max-width: 100%; height: auto; margin-top: 10px; }
+    h2 { color: #333; }
+  </style>
+</head>
+<body>
+  <h1>Lost & Found Items</h1>
+  <div class="container">
+    <div class="column">
+      <h2>Lost Items</h2>
+      {% for item in lost_items %}
+        <div class="item">
+          <h3>{{ item[1] }}</h3>
+          <p><strong>Description:</strong> {{ item[2] }}</p>
+          <p><strong>Location:</strong> {{ item[3] }}</p>
+          <p><strong>Email:</strong> {{ item[5] }}</p>
+          {% if item[4] %}<img src="{{ url_for('static', filename=item[4]) }}" alt="Lost Item Image">{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="column">
+      <h2>Found Items</h2>
+      {% for item in found_items %}
+        <div class="item">
+          <h3>{{ item[1] }}</h3>
+          <p><strong>Description:</strong> {{ item[2] }}</p>
+          <p><strong>Location:</strong> {{ item[3] }}</p>
+          <p><strong>Email:</strong> {{ item[5] }}</p>
+          {% if item[4] %}<img src="{{ url_for('static', filename=item[4]) }}" alt="Found Item Image">{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <br><a href="/">⬅ Back to Home</a>
+</body>
+</html>
